@@ -76,7 +76,7 @@ const Card = () => {
 
   let newDeck = [];
 
-  function popD(deck) {
+  function popThreeValue(deck) {
     const temp = [];
     let popped;
 
@@ -88,9 +88,7 @@ const Card = () => {
     return temp;
   }
 
-  newDeck = [...newDeck, ...popD(deck)];
-  newDeck = [...newDeck, ...popD(deck)];
-  newDeck = [...newDeck, ...popD(deck)];
+  newDeck = [...newDeck, ...popThreeValue(deck)];
 
   //newDeck = popD(deck, newDeck);
 
@@ -126,19 +124,27 @@ const Card = () => {
   //compare(newDeck, deckAce, deckKing);
   console.log("*/*/*/*/", compare(newDeck, deckAce, deckKing));
 
-  while (compare(newDeck, deckAce, deckKing) === true) {
-    let value = newDeck[newDeck.length - 1];
-    value = value.substring(1);
+  //function addValuesToDeckOfGround(newDeck, deckAce, deckKing) {
 
-    if (deckKing[deckKing.length - 1] - value === 1) {
-      deckKing = [...deckKing, value];
-    } else {
-      deckAce = [...deckAce, value];
+  while (newDeck.length !== 52) {
+    while (compare(newDeck, deckAce, deckKing) === true) {
+      let value = newDeck[newDeck.length - 1];
+      value = value.substring(1);
+
+      if (deckKing[deckKing.length - 1] - value === 1) {
+        deckKing = [...deckKing, value];
+      } else {
+        deckAce = [...deckAce, value];
+      }
+      newDeck.pop();
     }
-    newDeck.pop();
-  }
+    // }
 
-  console.log(deckAce, "-----------", deckKing);
+    //addValuesToDeckOfGround(newDeck, deckAce, deckKing);
+
+    newDeck = [...newDeck, ...popThreeValue(deck)];
+    console.log(deckAce, "-----------", deckKing);
+  }
 
   return <div>Card</div>;
 };
