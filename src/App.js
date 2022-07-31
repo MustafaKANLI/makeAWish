@@ -1,12 +1,12 @@
 import "./App.css";
 import React from "react";
-import Card from "./components/Card";
+import Deck from "./components/Deck";
 
 const App = () => {
   return (
     <div className="App">
       hello world
-      <Card />
+      <Deck />
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import Card from "./Card/Card";
 
 const Deck = () => {
   var suits = ["spades", "diamonds", "clubs", "hearts"];
@@ -54,9 +55,13 @@ const Deck = () => {
     <div>
       Card
       <div>
-        {deck.forEach(async (element) => {
-          await element;
-        })}
+        {deck.map((item) => (
+          <Card
+            suits={item.Suit}
+            values={item.Value}
+            key={item.Value + item.Suit}
+          />
+        ))}
       </div>
     </div>
   );
