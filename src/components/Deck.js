@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card = () => {
+const Deck = () => {
   var suits = ["spades", "diamonds", "clubs", "hearts"];
   var values = [
     "1",
@@ -50,7 +50,16 @@ const Card = () => {
 
   console.log(deck);
 
-  return <div>Card</div>;
+  return (
+    <div>
+      Card
+      <div>
+        {deck.forEach(async (element) => {
+          await element;
+        })}
+      </div>
+    </div>
+  );
 };
 
-export default Card;
+export default Deck;
